@@ -1,183 +1,301 @@
 /**
- * Shopee Afiliados - Interactive Application Script
- * Complete affiliate management, search, modals, and responsive interactions
+ * Shopee Afiliados - Interactive Application Script v2.0
+ * Dynamic product rendering, filtering, sidebar controls, modals, mobile UX & micro-animations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // =========================================================================
-  // 1. DATA: Configurable Products & Dynamic Loading
+  // 1. DATA & PRODUCTS MANAGEMENT
   // =========================================================================
   const FALLBACK_PRODUCTS = [
-    {
-      id: 1,
-      rank: 1,
-      title: "Fone de Ouvido Bluetooth",
-      category: "eletronicos",
-      rating: "4,9",
-      reviews: "12,5k",
-      price: "R$ 89,90",
-      oldPrice: "R$ 129,90",
-      discount: "31% OFF",
-      image: "assets/images/prod-fone.jpg",
-      affiliateUrl: "https://shopee.com.br?aff_id=1836460594"
-    },
-    {
-      id: 2,
-      rank: 2,
-      title: "Smartwatch D20",
-      category: "eletronicos",
-      rating: "4,8",
-      reviews: "8,2k",
-      price: "R$ 59,90",
-      oldPrice: "R$ 99,90",
-      discount: "40% OFF",
-      image: "assets/images/prod-smartwatch.jpg",
-      affiliateUrl: "https://shopee.com.br?aff_id=1836460594"
-    },
-    {
-      id: 3,
-      rank: 3,
-      title: "Fita LED RGB 5M",
-      category: "casa",
-      rating: "4,7",
-      reviews: "6,1k",
-      price: "R$ 29,90",
-      oldPrice: "R$ 49,90",
-      discount: "40% OFF",
-      image: "assets/images/prod-fita-led.jpg",
-      affiliateUrl: "https://shopee.com.br?aff_id=1836460594"
-    },
-    {
-      id: 4,
-      rank: 4,
-      title: "Carregador Portátil 10000mAh",
-      category: "eletronicos",
-      rating: "4,8",
-      reviews: "9,8k",
-      price: "R$ 49,90",
-      oldPrice: "R$ 79,90",
-      discount: "37% OFF",
-      image: "assets/images/prod-carregador.jpg",
-      affiliateUrl: "https://shopee.com.br?aff_id=1836460594"
-    },
-    {
-      id: 5,
-      rank: 5,
-      title: "Fritadeira Air Fryer 4L",
-      category: "casa",
-      rating: "4,9",
-      reviews: "15,2k",
-      price: "R$ 259,90",
-      oldPrice: "R$ 399,90",
-      discount: "35% OFF",
-      image: "assets/images/prod-airfryer.jpg",
-      affiliateUrl: "https://shopee.com.br?aff_id=1836460594"
-    }
+    { id: 1, title: "Fone de Ouvido Bluetooth", category: "eletronicos", price: "R$ 89,90", oldPrice: "R$ 129,90", discount: "31% OFF", rating: "4,9", reviews: "12,5k", savings: "Economize R$ 40,00", image: "assets/images/prod-fone.jpg", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 2, title: "Smartwatch D20", category: "eletronicos", price: "R$ 59,90", oldPrice: "R$ 99,90", discount: "40% OFF", rating: "4,8", reviews: "8,2k", savings: "Economize R$ 40,00", image: "assets/images/prod-smartwatch.jpg", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 3, title: "Fita LED RGB 5M", category: "casa", price: "R$ 29,90", oldPrice: "R$ 49,90", discount: "40% OFF", rating: "4,7", reviews: "6,1k", savings: "Economize R$ 20,00", image: "assets/images/prod-fita-led.jpg", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 4, title: "Carregador Portátil 10000mAh", category: "eletronicos", price: "R$ 49,90", oldPrice: "R$ 79,90", discount: "37% OFF", rating: "4,8", reviews: "9,8k", savings: "Economize R$ 30,00", image: "assets/images/prod-carregador.jpg", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 5, title: "Fritadeira Air Fryer 4L", category: "casa", price: "R$ 259,90", oldPrice: "R$ 399,90", discount: "37% OFF", rating: "4,9", reviews: "15,2k", savings: "Economize R$ 140,00", image: "assets/images/prod-airfryer.jpg", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 6, title: "Moletom Premium", category: "moda", price: "R$ 89,90", oldPrice: "R$ 119,90", discount: "25% OFF", rating: "4,6", reviews: "3,2k", savings: "Economize R$ 30,00", image: "assets/images/prod-moletom.png", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 7, title: "Kit Halteres 10kg", category: "esportes", price: "R$ 99,90", oldPrice: "R$ 159,90", discount: "38% OFF", rating: "4,8", reviews: "7,1k", savings: "Economize R$ 60,00", image: "assets/images/prod-halteres.png", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 8, title: "Perfume Ocean 100ml", category: "beleza", price: "R$ 79,90", oldPrice: "R$ 119,90", discount: "33% OFF", rating: "4,7", reviews: "4,3k", savings: "Economize R$ 40,00", image: "assets/images/prod-perfume.png", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 9, title: "Robô Aspirador Smart", category: "casa", price: "R$ 389,90", oldPrice: "R$ 599,90", discount: "35% OFF", rating: "4,6", reviews: "5,6k", savings: "Economize R$ 210,00", image: "assets/images/prod-robo.png", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 10, title: "Teclado Mecânico RGB", category: "eletronicos", price: "R$ 139,90", oldPrice: "R$ 199,90", discount: "30% OFF", rating: "4,8", reviews: "11,2k", savings: "Economize R$ 60,00", image: "assets/images/prod-teclado.jpg", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 11, title: "Fone Bluetooth TWS", category: "eletronicos", price: "R$ 99,90", oldPrice: "R$ 139,90", discount: "28% OFF", rating: "4,6", reviews: "9,7k", savings: "Economize R$ 40,00", image: "assets/images/prod-fone-tws.png", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" },
+    { id: 12, title: "Liquidificador Power 900W", category: "casa", price: "R$ 119,90", oldPrice: "R$ 179,90", discount: "32% OFF", rating: "4,7", reviews: "3,9k", savings: "Economize R$ 60,00", image: "assets/images/prod-liquidificador.png", affiliateUrl: "https://shopee.com.br?aff_id=1836460594" }
   ];
 
-  let PRODUCTS_DATA = (window.SHOPEE_PRODUCTS && Array.isArray(window.SHOPEE_PRODUCTS) && window.SHOPEE_PRODUCTS.length > 0)
+  let ALL_PRODUCTS = (window.SHOPEE_PRODUCTS && Array.isArray(window.SHOPEE_PRODUCTS) && window.SHOPEE_PRODUCTS.length > 0)
     ? [...window.SHOPEE_PRODUCTS]
     : [...FALLBACK_PRODUCTS];
 
-  // Render products into the container
+  // Wishlist state
+  const wishlist = new Set(JSON.parse(localStorage.getItem('shopee_wishlist') || '[]'));
+
+  function saveWishlist() {
+    localStorage.setItem('shopee_wishlist', JSON.stringify([...wishlist]));
+  }
+
   function renderProducts(products) {
     const container = document.getElementById('productsContainer');
+    const offersCountEl = document.getElementById('offersCount');
+
+    if (offersCountEl) {
+      offersCountEl.textContent = `(${products.length} ${products.length === 1 ? 'oferta' : 'ofertas'})`;
+    }
+
     if (!container) return;
 
-    container.innerHTML = products.map((prod, index) => {
-      const rank = prod.rank || (index + 1);
-      const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-default';
+    if (products.length === 0) {
+      container.innerHTML = `
+        <div class="empty-products">
+          <p>😕 Nenhuma oferta encontrada com os filtros selecionados.</p>
+          <button type="button" class="btn btn-primary" id="btnResetFilters" style="margin: 0 auto;">Limpar Filtros</button>
+        </div>
+      `;
+      const resetBtn = document.getElementById('btnResetFilters');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', resetAllFilters);
+      }
+      return;
+    }
 
+    container.innerHTML = products.map((prod, i) => {
+      const discountTag = prod.discount || '';
+      const isWishlisted = wishlist.has(prod.id);
       return `
-        <div class="product-item" data-id="${prod.id}">
-          <div class="rank-badge ${rankClass}">${rank}</div>
-          <div class="prod-thumb">
+        <div class="product-card" data-id="${prod.id}" data-category="${prod.category}" style="animation-delay:${i * 0.04}s">
+          ${discountTag ? `<div class="card-discount-badge">${discountTag}</div>` : ''}
+          <button class="card-wishlist-btn ${isWishlisted ? 'active' : ''}" data-prod-id="${prod.id}" aria-label="Adicionar aos favoritos" title="Favoritar">
+            ${isWishlisted ? '❤️' : '🤍'}
+          </button>
+          <div class="card-thumb">
             <img src="${prod.image}" alt="${prod.title}" loading="lazy" onerror="this.src='assets/images/prod-fone.jpg'">
           </div>
-          <div class="prod-details">
-            <h3 class="prod-title">${prod.title}</h3>
-            <div class="prod-rating">
-              <span class="star">★</span>
-              <span class="rate-num">${prod.rating || '4,9'}</span>
-              <span class="rate-count">(${prod.reviews || '5k'})</span>
+          <div class="card-body">
+            <h3 class="card-title">${prod.title}</h3>
+            <div class="card-rating">
+              <span class="star-icon">★</span>
+              <span class="rate-val">${prod.rating || '4,8'}</span>
+              <span class="rate-reviews">(${prod.reviews || '5k'})</span>
             </div>
-            <div class="prod-pricing">
-              <span class="curr-price">${prod.price}</span>
-              ${prod.oldPrice ? `<span class="old-price">${prod.oldPrice}</span>` : ''}
-              ${prod.discount ? `<span class="off-badge">${prod.discount}</span>` : ''}
+            <div class="card-pricing">
+              <span class="price-current">${prod.price}</span>
+              ${prod.oldPrice ? `<span class="price-old">${prod.oldPrice}</span>` : ''}
             </div>
-          </div>
-          <div class="prod-actions">
-            <a href="${prod.affiliateUrl || 'https://shopee.com.br'}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
-              Ver na Shopee
+            ${prod.savings ? `<div class="card-savings">${prod.savings}</div>` : ''}
+            <a href="${prod.affiliateUrl || 'https://shopee.com.br'}" target="_blank" rel="noopener noreferrer" class="btn btn-shopee">
+              Ver na Shopee <span class="arrow">→</span>
             </a>
-            <div class="mobile-chevron">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </div>
           </div>
         </div>
       `;
     }).join('');
 
     attachProductClickListeners();
-    updateBotStatusBadge();
+    attachWishlistListeners();
+    initScrollAnimation();
   }
 
-  function attachProductClickListeners() {
-    const productButtons = document.querySelectorAll('.btn-product, .product-item');
-    productButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        try {
-          const current = parseInt(localStorage.getItem('shopee_site_clicks') || '0', 10);
-          localStorage.setItem('shopee_site_clicks', (current + 1).toString());
-        } catch (e) {}
+  function attachWishlistListeners() {
+    document.querySelectorAll('.card-wishlist-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const prodId = parseInt(btn.dataset.prodId);
+        if (wishlist.has(prodId)) {
+          wishlist.delete(prodId);
+          btn.innerHTML = '🤍';
+          btn.classList.remove('active');
+          showToast('Removido dos favoritos');
+        } else {
+          wishlist.add(prodId);
+          btn.innerHTML = '❤️';
+          btn.classList.add('active');
+          // Heart burst animation
+          btn.style.transform = 'scale(1.4)';
+          setTimeout(() => { btn.style.transform = ''; }, 300);
+          showToast('Adicionado aos favoritos! ❤️');
+        }
+        saveWishlist();
       });
     });
   }
 
-  function updateBotStatusBadge() {
-    const statusEl = document.getElementById('botStatusText');
-    if (!statusEl) return;
-    const timeStr = window.SHOPEE_LAST_UPDATE || (PRODUCTS_DATA[0] && PRODUCTS_DATA[0].updatedAt);
-    if (timeStr) {
-      statusEl.textContent = `Robô Shopee Ativo • Atualizado ${timeStr} • 70% OFF`;
-    }
+  function attachProductClickListeners() {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (!e.target.closest('a') && !e.target.closest('.card-wishlist-btn')) {
+          const btnLink = card.querySelector('.btn-shopee');
+          if (btnLink && btnLink.href) {
+            window.open(btnLink.href, '_blank', 'noopener,noreferrer');
+          }
+        }
+      });
+    });
   }
 
-  // Fetch products from data/products.json or local script
   async function loadProducts() {
     if (window.SHOPEE_PRODUCTS && Array.isArray(window.SHOPEE_PRODUCTS) && window.SHOPEE_PRODUCTS.length > 0) {
-      PRODUCTS_DATA = window.SHOPEE_PRODUCTS;
-      renderProducts(PRODUCTS_DATA);
+      ALL_PRODUCTS = window.SHOPEE_PRODUCTS;
+      applyFilters();
+      return;
     }
     try {
       const res = await fetch('data/products.json?t=' + Date.now());
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          PRODUCTS_DATA = data;
-          renderProducts(PRODUCTS_DATA);
+          ALL_PRODUCTS = data;
+          applyFilters();
           return;
         }
       }
-    } catch (e) {
-      // Quando aberto como arquivo local (file:///), o browser bloqueia fetch por CORS,
-      // mas usa perfeitamente os dados de window.SHOPEE_PRODUCTS
-    }
-    renderProducts(PRODUCTS_DATA);
+    } catch (e) {}
+    applyFilters();
   }
 
-  loadProducts();
+  // =========================================================================
+  // 2. SIDEBAR FILTER & SEARCH ENGINE
+  // =========================================================================
+  const searchInput = document.getElementById('searchInput');
+  const sortSelect = document.getElementById('sortSelect');
+  const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+  const filterForm = document.getElementById('filterForm');
 
-  // Atualiza os produtos no site automaticamente se novas ofertas entrarem
-  setInterval(loadProducts, 60000); // Checa a cada 1 minuto se há novidades
-  window.addEventListener('focus', loadProducts); // Recarrega se o usuário voltar para a aba
+  function applyFilters() {
+    let result = [...ALL_PRODUCTS];
+
+    // Search input text filter
+    const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+    if (query !== '') {
+      result = result.filter(p => p.title.toLowerCase().includes(query));
+    }
+
+    // Category filter (checkboxes)
+    const categoryChecks = document.querySelectorAll('input[name="filter-cat"]:checked');
+    if (categoryChecks.length > 0) {
+      const selectedCats = Array.from(categoryChecks).map(c => c.value);
+      result = result.filter(p => selectedCats.includes(p.category));
+    }
+
+    // Discount range filter (checkboxes)
+    const discountChecks = document.querySelectorAll('input[name="filter-disc"]:checked');
+    const selectedDiscValues = Array.from(discountChecks).map(c => c.value);
+
+    if (discountChecks.length > 0 && !selectedDiscValues.includes('all')) {
+      result = result.filter(p => {
+        const numMatch = (p.discount || '').match(/(\d+)/);
+        const discNum = numMatch ? parseInt(numMatch[1], 10) : 0;
+        return selectedDiscValues.some(val => {
+          if (val === '0-20') return discNum <= 20;
+          if (val === '20-40') return discNum >= 20 && discNum <= 40;
+          if (val === '40-60') return discNum >= 40 && discNum <= 60;
+          if (val === '60+') return discNum >= 60;
+          return true;
+        });
+      });
+    }
+
+    // Sorting
+    const sortVal = sortSelect ? sortSelect.value : 'recommended';
+    if (sortVal === 'highest-discount') {
+      result.sort((a, b) => {
+        const dA = parseInt((a.discount || '0').replace(/\D/g, ''), 10);
+        const dB = parseInt((b.discount || '0').replace(/\D/g, ''), 10);
+        return dB - dA;
+      });
+    } else if (sortVal === 'lowest-price') {
+      result.sort((a, b) => {
+        const pA = parseFloat((a.price || '0').replace(/[^\d,]/g, '').replace(',', '.'));
+        const pB = parseFloat((b.price || '0').replace(/[^\d,]/g, '').replace(',', '.'));
+        return pA - pB;
+      });
+    } else if (sortVal === 'best-sellers') {
+      result.sort((a, b) => {
+        const reviewsToNum = r => parseFloat((r || '0').replace('k', '')) * (r.includes('k') ? 1000 : 1);
+        return reviewsToNum(b.reviews) - reviewsToNum(a.reviews);
+      });
+    }
+
+    renderProducts(result);
+  }
+
+  function resetAllFilters() {
+    if (searchInput) searchInput.value = '';
+    const allChecks = document.querySelectorAll('.sidebar-filter-box input[type="checkbox"]');
+    allChecks.forEach(ch => {
+      ch.checked = (ch.value === 'all');
+    });
+    const radios = document.querySelectorAll('input[name="filter-sort"]');
+    radios.forEach(r => {
+      r.checked = (r.value === 'recommended');
+    });
+    if (sortSelect) sortSelect.value = 'recommended';
+    applyFilters();
+  }
+
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      resetAllFilters();
+    });
+  }
+
+  // Sidebar change listeners
+  document.querySelectorAll('.sidebar-filter-box input').forEach(input => {
+    input.addEventListener('change', applyFilters);
+  });
+
+  if (sortSelect) sortSelect.addEventListener('change', applyFilters);
+
+  // Debounced search
+  let searchTimer;
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(applyFilters, 250);
+    });
+  }
+
+  // Accordion toggle in sidebar
+  document.querySelectorAll('.filter-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.closest('.filter-group');
+      if (group) {
+        group.classList.toggle('collapsed');
+      }
+    });
+  });
 
   // =========================================================================
-  // 2. DOM Elements Selection
+  // 3. MOBILE FILTER DRAWER (offers page)
+  // =========================================================================
+  const mobileFilterToggle = document.getElementById('mobileFilterToggle');
+  const sidebarFilterBox = document.querySelector('.sidebar-filter-box');
+  const filterMobileOverlay = document.getElementById('filterMobileOverlay');
+  const mobileFilterClose = document.getElementById('mobileFilterClose');
+
+  function openMobileFilters() {
+    if (sidebarFilterBox) {
+      sidebarFilterBox.classList.add('mobile-open');
+      document.body.style.overflow = 'hidden';
+    }
+    if (filterMobileOverlay) filterMobileOverlay.classList.add('active');
+  }
+
+  function closeMobileFilters() {
+    if (sidebarFilterBox) {
+      sidebarFilterBox.classList.remove('mobile-open');
+      document.body.style.overflow = '';
+    }
+    if (filterMobileOverlay) filterMobileOverlay.classList.remove('active');
+  }
+
+  if (mobileFilterToggle) mobileFilterToggle.addEventListener('click', openMobileFilters);
+  if (mobileFilterClose) mobileFilterClose.addEventListener('click', closeMobileFilters);
+  if (filterMobileOverlay) filterMobileOverlay.addEventListener('click', closeMobileFilters);
+
+  // =========================================================================
+  // 4. NAVIGATION & MOBILE DRAWER
   // =========================================================================
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileDrawer = document.getElementById('mobileDrawer');
@@ -185,49 +303,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerClose = document.getElementById('drawerClose');
   const drawerLinks = document.querySelectorAll('.drawer-link');
 
-  const searchInput = document.getElementById('searchInput');
-  const mobileSearchTrigger = document.getElementById('mobileSearchTrigger');
-  const mobileSearchBar = document.getElementById('mobileSearchBar');
-  const mobileSearchInput = document.getElementById('mobileSearchInput');
-  const closeSearchBtn = document.getElementById('closeSearchBtn');
-
-  const themeToggle = document.getElementById('themeToggle');
-  const productsContainer = document.getElementById('productsContainer');
-  const categoryCards = document.querySelectorAll('.category-card');
-  const catNextBtn = document.getElementById('catNextBtn');
-  const categoriesContainer = document.getElementById('categoriesContainer');
-
-  const couponsModal = document.getElementById('couponsModal');
-  const closeCouponsModal = document.getElementById('closeCouponsModal');
-  const viewCouponsBtn = document.getElementById('viewCouponsBtn');
-  const navCupons = document.getElementById('navCupons');
-  const drawerCupons = document.getElementById('drawerCupons');
-  const bottomCuponsTab = document.getElementById('bottomCuponsTab');
-
-  const howItWorksModal = document.getElementById('howItWorksModal');
-  const openHowItWorksBtn = document.getElementById('openHowItWorksBtn');
-  const closeHowItWorksModal = document.getElementById('closeHowItWorksModal');
-  const closeHowModalBtn = document.getElementById('closeHowModalBtn');
-  const navComoFunciona = document.getElementById('navComoFunciona');
-  const drawerComoFunciona = document.getElementById('drawerComoFunciona');
-  const footerComoFunciona = document.getElementById('footerComoFunciona');
-
-  const newsletterForm = document.getElementById('newsletterForm');
-  const toast = document.getElementById('toast');
-  const bottomTabs = document.querySelectorAll('.bottom-tab-item');
-
-  // =========================================================================
-  // 3. Mobile Navigation Drawer
-  // =========================================================================
   function openDrawer() {
-    mobileDrawer.classList.add('active');
-    drawerOverlay.classList.add('active');
+    if (mobileDrawer) mobileDrawer.classList.add('active');
+    if (drawerOverlay) drawerOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
-    mobileDrawer.classList.remove('active');
-    drawerOverlay.classList.remove('active');
+    if (mobileDrawer) mobileDrawer.classList.remove('active');
+    if (drawerOverlay) drawerOverlay.classList.remove('active');
     document.body.style.overflow = '';
   }
 
@@ -236,235 +320,23 @@ document.addEventListener('DOMContentLoaded', () => {
   if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 
   drawerLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeDrawer();
-      drawerLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
+    link.addEventListener('click', () => closeDrawer());
   });
 
   // =========================================================================
-  // 4. Mobile Search Bar Toggle
+  // 5. HEADER SCROLL EFFECT
   // =========================================================================
-  if (mobileSearchTrigger) {
-    mobileSearchTrigger.addEventListener('click', () => {
-      mobileSearchBar.classList.toggle('active');
-      if (mobileSearchBar.classList.contains('active')) {
-        mobileSearchInput.focus();
-      }
-    });
-  }
-
-  if (closeSearchBtn) {
-    closeSearchBtn.addEventListener('click', () => {
-      mobileSearchBar.classList.remove('active');
-      filterProducts('');
-    });
-  }
-
-  // =========================================================================
-  // 5. Real-time Product Search Filter
-  // =========================================================================
-  function filterProducts(query) {
-    const cleanQuery = query.toLowerCase().trim();
-    const productItems = document.querySelectorAll('.product-item');
-
-    productItems.forEach(item => {
-      const title = item.querySelector('.prod-title').textContent.toLowerCase();
-      if (cleanQuery === '' || title.includes(cleanQuery)) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => filterProducts(e.target.value));
-  }
-
-  if (mobileSearchInput) {
-    mobileSearchInput.addEventListener('input', (e) => filterProducts(e.target.value));
-  }
-
-  // =========================================================================
-  // 6. Category Filtering & Carousel Scrolling
-  // =========================================================================
-  let selectedCategory = null;
-
-  categoryCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const cat = card.getAttribute('data-cat');
-      
-      if (selectedCategory === cat) {
-        // Unselect
-        selectedCategory = null;
-        categoryCards.forEach(c => c.style.borderColor = '');
-        filterProducts('');
-        showToast('Mostrando todas as categorias');
-      } else {
-        selectedCategory = cat;
-        categoryCards.forEach(c => c.style.borderColor = '');
-        card.style.borderColor = 'var(--shopee-orange)';
-        
-        // Filter products matching category
-        const productItems = document.querySelectorAll('.product-item');
-        let matched = 0;
-        productItems.forEach(item => {
-          const prodId = parseInt(item.getAttribute('data-id'), 10);
-          const prodData = PRODUCTS_DATA.find(p => p.id === prodId);
-          if (prodData && prodData.category === cat) {
-            item.style.display = '';
-            matched++;
-          } else {
-            item.style.display = 'none';
-          }
-        });
-
-        // Scroll to products section
-        const maisVendidos = document.getElementById('mais-vendidos');
-        if (maisVendidos) maisVendidos.scrollIntoView({ behavior: 'smooth' });
-
-        showToast(`Filtrado por: ${card.querySelector('.cat-name').textContent}`);
-      }
-    });
-  });
-
-  if (catNextBtn && categoriesContainer) {
-    catNextBtn.addEventListener('click', () => {
-      categoriesContainer.scrollBy({ left: 240, behavior: 'smooth' });
-    });
-  }
-
-  // =========================================================================
-  // 7. Product Click (Desktop & Mobile Click Handling)
-  // =========================================================================
-  function attachProductClickListeners() {
-    const items = document.querySelectorAll('.product-item');
-    items.forEach(item => {
-      item.addEventListener('click', (e) => {
-        if (!e.target.closest('a')) {
-          const prodId = parseInt(item.getAttribute('data-id'), 10);
-          const prodData = PRODUCTS_DATA.find(p => p.id === prodId);
-          if (prodData && prodData.affiliateUrl) {
-            window.open(prodData.affiliateUrl, '_blank', 'noopener,noreferrer');
-          }
-        }
-      });
-    });
-  }
-
-  // =========================================================================
-  // 8. Modals Logic (Cupons & Como Funciona)
-  // =========================================================================
-  function openModal(modal) {
-    if (modal) {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+  const mainHeader = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (mainHeader) {
+      mainHeader.classList.toggle('scrolled', window.scrollY > 30);
     }
-  }
-
-  function closeModal(modal) {
-    if (modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-
-  // Open Coupons Modal triggers
-  const couponTriggers = [viewCouponsBtn, navCupons, drawerCupons, bottomCuponsTab];
-  couponTriggers.forEach(btn => {
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(couponsModal);
-      });
-    }
-  });
-
-  if (closeCouponsModal) {
-    closeCouponsModal.addEventListener('click', () => closeModal(couponsModal));
-  }
-  if (couponsModal) {
-    couponsModal.addEventListener('click', (e) => {
-      if (e.target === couponsModal) closeModal(couponsModal);
-    });
-  }
-
-  // Open How It Works Modal triggers
-  const howTriggers = [openHowItWorksBtn, navComoFunciona, drawerComoFunciona, footerComoFunciona];
-  howTriggers.forEach(btn => {
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(howItWorksModal);
-      });
-    }
-  });
-
-  if (closeHowItWorksModal) closeHowItWorksModal.addEventListener('click', () => closeModal(howItWorksModal));
-  if (closeHowModalBtn) closeHowModalBtn.addEventListener('click', () => closeModal(howItWorksModal));
-  if (howItWorksModal) {
-    howItWorksModal.addEventListener('click', (e) => {
-      if (e.target === howItWorksModal) closeModal(howItWorksModal);
-    });
-  }
-
-  // Copy Coupon Code
-  const copyButtons = document.querySelectorAll('.copy-btn');
-  copyButtons.forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const code = btn.getAttribute('data-code');
-      try {
-        await navigator.clipboard.writeText(code);
-        const originalText = btn.textContent;
-        btn.textContent = 'Copiado! ✓';
-        btn.style.backgroundColor = '#10b981';
-        showToast(`Cupom ${code} copiado! Use na finalização.`);
-
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.backgroundColor = '';
-        }, 2500);
-      } catch (err) {
-        showToast(`Cupom: ${code}`);
-      }
-    });
-  });
+  }, { passive: true });
 
   // =========================================================================
-  // 9. Toast Notification Helper
+  // 6. THEME TOGGLE (DARK / LIGHT)
   // =========================================================================
-  let toastTimer;
-  function showToast(message) {
-    if (!toast) return;
-    const msgEl = toast.querySelector('.toast-msg');
-    if (msgEl) msgEl.textContent = message;
-
-    toast.classList.add('active');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toast.classList.remove('active');
-    }, 3200);
-  }
-
-  // =========================================================================
-  // 10. Newsletter Form Submission
-  // =========================================================================
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailInput = document.getElementById('emailInput');
-      if (emailInput && emailInput.value) {
-        showToast('E-mail cadastrado! Você receberá as melhores ofertas Shopee.');
-        emailInput.value = '';
-      }
-    });
-  }
-
-  // =========================================================================
-  // 11. Theme Mode Toggle (Dark / Light)
-  // =========================================================================
+  const themeToggle = document.getElementById('themeToggle');
   const savedTheme = localStorage.getItem('shopee_theme');
   if (savedTheme === 'light') {
     document.body.classList.add('light-mode');
@@ -475,42 +347,419 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('light-mode');
       const isLight = document.body.classList.contains('light-mode');
       localStorage.setItem('shopee_theme', isLight ? 'light' : 'dark');
-      showToast(isLight ? 'Modo Claro ativado' : 'Modo Escuro ativado');
+
+      // Small bounce animation on icon
+      themeToggle.style.transform = 'rotate(360deg)';
+      themeToggle.style.transition = 'transform 0.5s ease';
+      setTimeout(() => {
+        themeToggle.style.transform = '';
+        themeToggle.style.transition = '';
+      }, 500);
     });
   }
 
   // =========================================================================
-  // 12. Mobile Bottom Navigation Active Tab State
+  // 7. MODALS & NEWSLETTER
   // =========================================================================
-  bottomTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      bottomTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  const couponsModal = document.getElementById('couponsModal');
+  const closeCouponsModal = document.getElementById('closeCouponsModal');
+  const viewCouponsBtn = document.getElementById('viewCouponsBtn');
+  const navCupons = document.getElementById('navCupons');
+
+  function openModal(m) {
+    if (m) {
+      m.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal(m) {
+    if (m) {
+      m.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  [viewCouponsBtn, navCupons].forEach(b => {
+    if (b) {
+      b.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(couponsModal);
+      });
+    }
+  });
+
+  if (closeCouponsModal) closeCouponsModal.addEventListener('click', () => closeModal(couponsModal));
+
+  // Close modal on overlay click
+  if (couponsModal) {
+    couponsModal.addEventListener('click', (e) => {
+      if (e.target === couponsModal) closeModal(couponsModal);
+    });
+  }
+
+  // Close modal on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal(couponsModal);
+      closeDrawer();
+      closeMobileFilters();
+    }
+  });
+
+  // Coupon copy functionality
+  document.querySelectorAll('.coupon-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const code = item.querySelector('.coupon-code-box')?.textContent?.trim();
+      if (code) {
+        navigator.clipboard.writeText(code).then(() => {
+          showToast(`Cupom "${code}" copiado! 🎉`);
+        }).catch(() => {
+          showToast(`Código: ${code}`);
+        });
+      }
     });
   });
 
-  // Active navigation highlight on scroll
-  const sections = document.querySelectorAll('section[id], main[id]');
-  const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
-
-  window.addEventListener('scroll', () => {
-    let currentSection = '';
-    const scrollPos = window.scrollY + 120;
-
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        currentSection = sec.getAttribute('id');
+  // Newsletter form
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('emailInput');
+      if (emailInput && emailInput.value) {
+        showToast('🎉 Cadastro realizado! Em breve você receberá nossas melhores ofertas.');
+        emailInput.value = '';
       }
     });
+  }
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSection}`) {
-        link.classList.add('active');
-      }
-    });
+  // =========================================================================
+  // 8. TOAST NOTIFICATIONS
+  // =========================================================================
+  function showToast(message, duration = 3000) {
+    let toastContainer = document.getElementById('toastContainer');
+    if (!toastContainer) {
+      toastContainer = document.createElement('div');
+      toastContainer.id = 'toastContainer';
+      toastContainer.style.cssText = `
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+      `;
+      document.body.appendChild(toastContainer);
+    }
+
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      background: rgba(15, 16, 24, 0.95);
+      border: 1px solid rgba(238, 77, 45, 0.3);
+      color: #f0f1f6;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: toastIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      white-space: nowrap;
+    `;
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    // Inject animation if not present
+    if (!document.getElementById('toastStyles')) {
+      const style = document.createElement('style');
+      style.id = 'toastStyles';
+      style.textContent = `
+        @keyframes toastIn { from { opacity:0; transform:translateY(12px) scale(0.9); } to { opacity:1; transform:translateY(0) scale(1); } }
+        @keyframes toastOut { from { opacity:1; transform:translateY(0) scale(1); } to { opacity:0; transform:translateY(-8px) scale(0.9); } }
+      `;
+      document.head.appendChild(style);
+    }
+
+    setTimeout(() => {
+      toast.style.animation = 'toastOut 0.25s ease forwards';
+      setTimeout(() => toast.remove(), 280);
+    }, duration);
+  }
+
+  // =========================================================================
+  // 9. INTERSECTION OBSERVER - Scroll animations
+  // =========================================================================
+  function initScrollAnimation() {
+    const animatedEls = document.querySelectorAll('.animate-on-scroll');
+    if (!animatedEls.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    animatedEls.forEach(el => observer.observe(el));
+  }
+
+  // Apply animate-on-scroll to sections
+  document.querySelectorAll('.trust-bar, .section-categories, .section-bestsellers, .section-coupons, .section-newsletter, .bestseller-card, .category-item-card').forEach(el => {
+    el.classList.add('animate-on-scroll');
   });
+
+  initScrollAnimation();
+
+  // =========================================================================
+  // 10. CATEGORY CAROUSEL SCROLL
+  // =========================================================================
+  const catNextBtn = document.getElementById('catNextBtn');
+  const catContainer = document.getElementById('categoriesContainer');
+
+  if (catNextBtn && catContainer) {
+    catNextBtn.addEventListener('click', () => {
+      catContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
+  // =========================================================================
+  // 11. HOW IT WORKS MODAL (index.html)
+  // =========================================================================
+  const openHowItWorksBtn = document.getElementById('openHowItWorksBtn');
+  if (openHowItWorksBtn) {
+    openHowItWorksBtn.addEventListener('click', () => {
+      showToast('🛍️ Navegue pelas ofertas, clique no produto e economize na Shopee!', 4000);
+    });
+  }
+
+  // =========================================================================
+  // 12. CATEGORIAS PAGE HANDLER (categorias.html)
+  // =========================================================================
+  function initCategoriesPage() {
+    const categoryGrid = document.getElementById('categoryProductsGrid');
+    if (!categoryGrid) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let selectedCategory = urlParams.get('cat') || 'eletronicos';
+
+    const categoryNames = {
+      'eletronicos': 'Eletrônicos',
+      'casa': 'Casa e Decoração',
+      'moda': 'Moda',
+      'beleza': 'Beleza',
+      'esportes': 'Esportes',
+      'automotivo': 'Automotivo',
+      'infantil': 'Infantil',
+      'game': 'Game & Geek',
+      'pet': 'Pet Shop',
+      'alimentos': 'Alimentos e Bebidas',
+      'saude': 'Saúde',
+      'ferramentas': 'Ferramentas',
+      'papelaria': 'Papelaria e Escritório',
+      'telefonia': 'Telefonia',
+      'jardim': 'Jardim e Outdoor'
+    };
+
+    function renderCategoryProducts(catKey) {
+      const activeTitleEl = document.getElementById('catActiveTitle');
+      const catName = categoryNames[catKey] || 'Destaques';
+      if (activeTitleEl) {
+        activeTitleEl.innerHTML = `<span class="section-title-dot"></span>Produtos em ${catName}`;
+      }
+
+      // Filter matching products
+      let filtered = ALL_PRODUCTS.filter(p => p.category === catKey);
+      if (filtered.length === 0) {
+        filtered = ALL_PRODUCTS.slice(0, 6);
+      }
+
+      categoryGrid.innerHTML = filtered.map((prod, i) => {
+        const isWishlisted = wishlist.has(prod.id);
+        return `
+          <div class="product-card" data-id="${prod.id}" data-category="${prod.category}" style="animation-delay:${i * 0.05}s">
+            ${prod.discount ? `<div class="card-discount-badge">${prod.discount}</div>` : ''}
+            <button class="card-wishlist-btn ${isWishlisted ? 'active' : ''}" data-prod-id="${prod.id}" aria-label="Adicionar aos favoritos" title="Favoritar">
+              ${isWishlisted ? '❤️' : '🤍'}
+            </button>
+            <div class="card-thumb">
+              <img src="${prod.image}" alt="${prod.title}" loading="lazy" onerror="this.src='assets/images/prod-fone.jpg'">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${prod.title}</h3>
+              <div class="card-rating">
+                <span class="star-icon">★</span>
+                <span class="rate-val">${prod.rating || '4,8'}</span>
+                <span class="rate-reviews">(${prod.reviews || '5k'})</span>
+              </div>
+              <div class="card-pricing">
+                <span class="price-current">${prod.price}</span>
+                ${prod.oldPrice ? `<span class="price-old">${prod.oldPrice}</span>` : ''}
+              </div>
+              ${prod.savings ? `<div class="card-savings">${prod.savings}</div>` : ''}
+              <a href="${prod.affiliateUrl || 'https://shopee.com.br?aff_id=1836460594'}" target="_blank" rel="noopener noreferrer" class="btn btn-shopee">
+                Ver na Shopee <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      attachWishlistListeners();
+      attachProductClickListeners();
+    }
+
+    function selectCategory(catKey, shouldScroll = false) {
+      selectedCategory = catKey;
+
+      document.querySelectorAll('.cat-sidebar-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.category === catKey);
+      });
+
+      document.querySelectorAll('.cat-featured-card').forEach(card => {
+        card.classList.toggle('active', card.dataset.category === catKey);
+      });
+
+      renderCategoryProducts(catKey);
+
+      if (shouldScroll) {
+        const prodSec = document.getElementById('catProductsSection');
+        if (prodSec) {
+          prodSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    document.querySelectorAll('.cat-sidebar-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const cat = item.dataset.category;
+        if (cat) selectCategory(cat, true);
+      });
+    });
+
+    document.querySelectorAll('.cat-featured-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const cat = card.dataset.category;
+        if (cat) selectCategory(cat, true);
+      });
+    });
+
+    selectCategory(selectedCategory);
+  }
+
+  // =========================================================================
+  // 13. MAIS VENDIDOS PAGE HANDLER (mais-vendidos.html)
+  // =========================================================================
+  function initBestSellersPage() {
+    const bsGrid = document.getElementById('bestsellersGrid');
+    if (!bsGrid) return;
+
+    const salesVolumeMap = [
+      '50mil+ vendidos', '45mil+ vendidos', '40mil+ vendidos', '38mil+ vendidos', '35mil+ vendidos',
+      '32mil+ vendidos', '28mil+ vendidos', '23mil+ vendidos', '20mil+ vendidos', '18mil+ vendidos',
+      '15mil+ vendidos', '12mil+ vendidos'
+    ];
+
+    let currentSort = 'bestseller';
+
+    function renderBestSellers(products) {
+      let list = [...products];
+
+      if (currentSort === 'bestseller') {
+        list.sort((a, b) => parseFloat(b.reviews) - parseFloat(a.reviews));
+      } else if (currentSort === 'rating') {
+        list.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+      } else if (currentSort === 'discount') {
+        list.sort((a, b) => parseInt(b.discount || 0) - parseInt(a.discount || 0));
+      } else if (currentSort === 'price-asc') {
+        const getPrice = p => parseFloat(p.price.replace(/[^\d,]/g, '').replace(',', '.'));
+        list.sort((a, b) => getPrice(a) - getPrice(b));
+      } else if (currentSort === 'price-desc') {
+        const getPrice = p => parseFloat(p.price.replace(/[^\d,]/g, '').replace(',', '.'));
+        list.sort((a, b) => getPrice(b) - getPrice(a));
+      }
+
+      bsGrid.innerHTML = list.map((prod, i) => {
+        const isWishlisted = wishlist.has(prod.id);
+        const rankNum = i + 1;
+        const isTopRank = rankNum <= 5;
+        const salesText = salesVolumeMap[i] || `${Math.max(5, 50 - i * 3)}mil+ vendidos`;
+
+        return `
+          <div class="product-card bs-product-card" data-id="${prod.id}" style="animation-delay:${i * 0.04}s">
+            <div class="rank-number-badge ${isTopRank ? 'top-rank' : ''}">${rankNum}</div>
+            ${prod.discount ? `<div class="card-discount-badge">${prod.discount}</div>` : ''}
+            <button class="card-wishlist-btn ${isWishlisted ? 'active' : ''}" data-prod-id="${prod.id}" aria-label="Adicionar aos favoritos" title="Favoritar">
+              ${isWishlisted ? '❤️' : '🤍'}
+            </button>
+            <div class="card-thumb">
+              <img src="${prod.image}" alt="${prod.title}" loading="lazy" onerror="this.src='assets/images/prod-fone.jpg'">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${prod.title}</h3>
+              <div class="card-rating">
+                <span class="star-icon">★</span>
+                <span class="rate-val">${prod.rating || '4,8'}</span>
+                <span class="rate-reviews">(${prod.reviews || '5k'})</span>
+              </div>
+              <div class="sales-count-info">🔥 ${salesText}</div>
+              <div class="card-pricing" style="margin-top: 6px;">
+                <span class="price-current">${prod.price}</span>
+                ${prod.oldPrice ? `<span class="price-old">${prod.oldPrice}</span>` : ''}
+              </div>
+              <a href="${prod.affiliateUrl || 'https://shopee.com.br?aff_id=1836460594'}" target="_blank" rel="noopener noreferrer" class="btn btn-shopee">
+                Ver na Shopee <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      attachWishlistListeners();
+      attachProductClickListeners();
+    }
+
+    // Attach Tab Filter Handlers
+    document.querySelectorAll('.bs-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.bs-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterType = btn.dataset.filter;
+        if (filterType === 'bestseller') currentSort = 'bestseller';
+        else if (filterType === 'toprated') currentSort = 'rating';
+        else if (filterType === 'trending') currentSort = 'discount';
+
+        renderBestSellers(ALL_PRODUCTS);
+      });
+    });
+
+    // Attach Sort Select Handler
+    const sortSelect = document.getElementById('bsSortSelect');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        renderBestSellers(ALL_PRODUCTS);
+      });
+    }
+
+    renderBestSellers(ALL_PRODUCTS);
+  }
+
+  // =========================================================================
+  // INITIAL LOAD
+  // =========================================================================
+  loadProducts();
+  initCategoriesPage();
+  initBestSellersPage();
 
 });
+
+

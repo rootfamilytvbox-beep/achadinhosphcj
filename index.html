@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopee Afiliados | Os melhores produtos com os melhores preços</title>
-  <meta name="description" content="Encontre as melhores ofertas, promoções exclusivas e cupons de desconto da Shopee reunidos em um só lugar. Economize muito mais!">
+  <meta name="description" content="Promoções exclusivas e cupons imperdíveis para você economizar muito mais!">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ee4d2d'><path d='M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z'/></svg>">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
       </button>
 
       <!-- Logo Shopee Afiliados -->
-      <a href="#home" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
@@ -53,23 +53,20 @@
       <!-- Desktop Navigation Menu -->
       <nav class="desktop-nav" aria-label="Navegação Principal">
         <ul>
-          <li><a href="#home" class="nav-link active">Início</a></li>
-          <li><a href="#ofertas" class="nav-link">Ofertas</a></li>
-          <li><a href="#categorias" class="nav-link">Categorias</a></li>
-          <li><a href="#mais-vendidos" class="nav-link">Mais Vendidos</a></li>
-          <li><a href="#cupons" class="nav-link" id="navCupons">Cupons</a></li>
-          <li><a href="#como-funciona" class="nav-link" id="navComoFunciona">Como Funciona</a></li>
+          <li><a href="index.html" class="nav-link active">Início</a></li>
+          <li><a href="ofertas.html" class="nav-link">Ofertas</a></li>
+          <li><a href="categorias.html" class="nav-link">Categorias</a></li>
+          <li><a href="mais-vendidos.html" class="nav-link">Mais Vendidos</a></li>
+          <li><a href="ofertas.html#cupons" class="nav-link" id="navCupons">Cupons</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
-          <li><a href="dashboard.html" target="_blank" class="nav-link nav-dashboard-link" style="color: #ee4d2d; font-weight: 700; display: flex; align-items: center; gap: 5px;">📊 Painel</a></li>
         </ul>
       </nav>
 
       <!-- Search and Header Actions -->
       <div class="header-actions">
-        <!-- Search Bar (Desktop) -->
         <div class="search-box">
           <input type="text" id="searchInput" placeholder="Buscar produtos..." autocomplete="off">
-          <button type="button" class="search-btn" id="searchBtn" aria-label="Pesquisar">
+          <button type="button" class="search-btn" aria-label="Pesquisar">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -77,15 +74,6 @@
           </button>
         </div>
 
-        <!-- Mobile Search Trigger Button -->
-        <button class="mobile-search-btn" id="mobileSearchTrigger" aria-label="Buscar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-
-        <!-- Theme Mode Toggle (Sun/Moon) -->
         <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Modo Claro/Escuro">
           <svg class="sun-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
@@ -100,27 +88,20 @@
           </svg>
         </button>
 
-        <!-- Cart/Wishlist Badge Icon -->
-        <a href="#mais-vendidos" class="icon-btn cart-btn" id="cartBtn" aria-label="Ver itens salvos" title="Ofertas Salvas">
+        <a href="ofertas.html" class="icon-btn cart-btn" aria-label="Carrinho" title="Minhas Ofertas">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"></circle>
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
-          <span class="badge" id="cartBadge">2</span>
+          <span class="badge">2</span>
         </a>
       </div>
 
     </div>
-
-    <!-- Mobile Search Expandable Bar -->
-    <div class="mobile-search-bar" id="mobileSearchBar">
-      <input type="text" id="mobileSearchInput" placeholder="Buscar produtos, cupons ou marcas...">
-      <button type="button" class="close-search-btn" id="closeSearchBtn">✕</button>
-    </div>
   </header>
 
-  <!-- Mobile Navigation Drawer Overlay -->
+  <!-- Mobile Drawer Menu -->
   <div class="drawer-overlay" id="drawerOverlay"></div>
   <aside class="mobile-drawer" id="mobileDrawer">
     <div class="drawer-header">
@@ -129,7 +110,6 @@
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
           </svg>
-          <span class="logo-badge-s">S</span>
         </div>
         <div class="logo-text">
           <span class="brand-name">Shopee</span>
@@ -139,127 +119,133 @@
       <button class="drawer-close" id="drawerClose">✕</button>
     </div>
     <ul class="drawer-nav">
-      <li><a href="#home" class="drawer-link active">🏠 Início</a></li>
-      <li><a href="#ofertas" class="drawer-link">🔥 Ofertas do Dia</a></li>
-      <li><a href="#categorias" class="drawer-link">🗂️ Categorias</a></li>
-      <li><a href="#mais-vendidos" class="drawer-link">⭐ Mais Vendidos</a></li>
-      <li><a href="#cupons" class="drawer-link" id="drawerCupons">🎟️ Cupons de Desconto</a></li>
-      <li><a href="#como-funciona" class="drawer-link" id="drawerComoFunciona">❓ Como Funciona</a></li>
+      <li><a href="index.html" class="drawer-link active">🏠 Início</a></li>
+      <li><a href="ofertas.html" class="drawer-link">🔥 Ofertas</a></li>
+      <li><a href="categorias.html" class="drawer-link">🗂️ Categorias</a></li>
+      <li><a href="mais-vendidos.html" class="drawer-link">⭐ Mais Vendidos</a></li>
+      <li><a href="ofertas.html#cupons" class="drawer-link">🎟️ Cupons</a></li>
       <li><a href="#contato" class="drawer-link">✉️ Contato</a></li>
-      <li><a href="dashboard.html" target="_blank" class="drawer-link" style="color: #ee4d2d; font-weight: 700;">📊 Painel de Afiliado</a></li>
     </ul>
-    <div class="drawer-footer">
-      <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
-        Ir para o App Shopee 🛍️
-      </a>
-    </div>
   </aside>
 
   <!-- Main Content Container -->
   <main class="main-content" id="home">
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="ofertas">
+    <!-- Hero Section for Início -->
+    <section class="hero-section">
       <div class="hero-container">
         
-        <!-- Left Hero Content -->
-        <div class="hero-content">
-          <h1 class="hero-title">
+        <!-- Hero Text -->
+        <div class="hero-text-content">
+          <h1 class="hero-heading">
             Os melhores produtos <br>
-            com os <span class="gradient-text">melhores preços</span>
+            com os <span class="hero-highlight">melhores preços</span>
           </h1>
-          <p class="hero-subtitle">
-            Promoções exclusivas e cupons imperdíveis para você economizar muito mais!
+          <p class="hero-subtext">
+            Promoções exclusivas e cupons imperdíveis <br>
+            para você economizar muito mais!
           </p>
+          <!-- Hero Stats -->
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>5k+</strong>
+              <span>Produtos</span>
+            </div>
+            <div class="hero-stat">
+              <strong>70%</strong>
+              <span>Desconto máx.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>R$0</strong>
+              <span>Frete disponível</span>
+            </div>
+          </div>
           <div class="hero-actions">
-            <a href="#mais-vendidos" class="btn btn-primary btn-glow">
-              Ver ofertas
-              <span class="btn-arrow">→</span>
+            <a href="ofertas.html" class="btn btn-primary btn-hero-cta">
+              Ver ofertas <span class="arrow">→</span>
             </a>
-            <button class="btn btn-glass" id="openHowItWorksBtn">
+            <button class="btn btn-outline-hero" id="openHowItWorksBtn">
               Como funciona?
             </button>
           </div>
         </div>
 
-        <!-- Right Hero Visual Banner -->
-        <div class="hero-visual">
-          <div class="hero-glow-effect"></div>
-          <div class="hero-image-wrapper">
-            <img src="assets/images/hero-banner.jpg" alt="Shopee Ofertas em Destaque" class="hero-img">
-          </div>
+        <!-- Hero Visual 3D Graphic Composition -->
+        <div class="hero-visual-content">
+          <div class="hero-glow"></div>
+          <img src="assets/images/hero-discount-3d.png" alt="Shopee Produtos e Ofertas 3D" class="hero-3d-img">
         </div>
 
       </div>
     </section>
 
-    <!-- Trust Badges / Benefits Bar -->
-    <section class="trust-bar" id="beneficios">
+    <!-- Trust Badges Bar (5 Items Grid) -->
+    <section class="trust-bar">
       <div class="trust-container">
         
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               <polyline points="9 12 11 14 15 10"></polyline>
             </svg>
           </div>
-          <div class="trust-text">
+          <div class="trust-info">
             <strong>Produtos originais</strong>
             <span>Qualidade garantida</span>
           </div>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
               <circle cx="12" cy="14" r="2"></circle>
             </svg>
           </div>
-          <div class="trust-text">
+          <div class="trust-info">
             <strong>Melhores preços</strong>
             <span>Ofertas todos os dias</span>
           </div>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </div>
-          <div class="trust-text">
+          <div class="trust-info">
             <strong>Compra segura</strong>
             <span>Seus dados protegidos</span>
           </div>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="1" y="3" width="15" height="13"></rect>
               <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
               <circle cx="5.5" cy="18.5" r="2.5"></circle>
               <circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
           </div>
-          <div class="trust-text">
+          <div class="trust-info">
             <strong>Entrega garantida</strong>
             <span>Rápida e confiável</span>
           </div>
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
               <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
             </svg>
           </div>
-          <div class="trust-text">
+          <div class="trust-info">
             <strong>Suporte dedicado</strong>
             <span>Estamos aqui para ajudar</span>
           </div>
@@ -268,256 +254,205 @@
       </div>
     </section>
 
-    <!-- Featured Categories Section -->
-    <section class="section categories-section" id="categorias">
+    <!-- Categorias em Destaque Section -->
+    <section class="section-categories" id="categorias">
       <div class="section-container">
         
-        <div class="section-header">
-          <h2 class="section-title">Categorias em destaque</h2>
-          <a href="#categorias" class="see-all-link" id="seeAllCategories">
-            Ver todas <span class="arrow">›</span>
-          </a>
+        <div class="section-header-row">
+          <h2 class="section-title"><span class="section-title-dot"></span>Categorias em destaque</h2>
+          <a href="ofertas.html" class="see-all-link">Ver todas <span class="arrow">›</span></a>
         </div>
 
-        <div class="categories-wrapper">
-          <div class="categories-grid" id="categoriesContainer">
-            
-            <div class="category-card" data-cat="eletronicos">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-eletronicos.jpg" alt="Eletrônicos" loading="lazy">
-              </div>
-              <span class="cat-name">Eletrônicos</span>
+        <div class="categories-grid-container" id="categoriesContainer">
+          
+          <a href="ofertas.html" class="category-item-card" data-cat="eletronicos">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-eletronicos.jpg" alt="Eletrônicos" loading="lazy">
             </div>
+            <span class="cat-title">Eletrônicos</span>
+          </a>
 
-            <div class="category-card" data-cat="casa">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-sofa.jpg" alt="Casa e Decoração" loading="lazy">
-              </div>
-              <span class="cat-name">Casa e Decoração</span>
+          <a href="ofertas.html" class="category-item-card" data-cat="casa">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-sofa.jpg" alt="Casa e Decoração" loading="lazy">
             </div>
+            <span class="cat-title">Casa e Decoração</span>
+          </a>
 
-            <div class="category-card" data-cat="moda">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-moda.jpg" alt="Moda" loading="lazy">
-              </div>
-              <span class="cat-name">Moda</span>
+          <a href="ofertas.html" class="category-item-card" data-cat="moda">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-moda.jpg" alt="Moda" loading="lazy">
             </div>
+            <span class="cat-title">Moda</span>
+          </a>
 
-            <div class="category-card" data-cat="beleza">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-beleza.jpg" alt="Beleza" loading="lazy">
-              </div>
-              <span class="cat-name">Beleza</span>
+          <a href="ofertas.html" class="category-item-card" data-cat="beleza">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-beleza.jpg" alt="Beleza" loading="lazy">
             </div>
+            <span class="cat-title">Beleza</span>
+          </a>
 
-            <div class="category-card" data-cat="esportes">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-esportes.jpg" alt="Esportes" loading="lazy">
-              </div>
-              <span class="cat-name">Esportes</span>
+          <a href="ofertas.html" class="category-item-card" data-cat="esportes">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-esportes.jpg" alt="Esportes" loading="lazy">
             </div>
+            <span class="cat-title">Esportes</span>
+          </a>
 
-            <div class="category-card" data-cat="automotivo">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-automotivo.jpg" alt="Automotivo" loading="lazy">
-              </div>
-              <span class="cat-name">Automotivo</span>
+          <a href="ofertas.html" class="category-item-card" data-cat="automotivo">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-automotivo.jpg" alt="Automotivo" loading="lazy">
             </div>
+            <span class="cat-title">Automotivo</span>
+          </a>
 
-            <div class="category-card" data-cat="infantil">
-              <div class="cat-img-box">
-                <img src="assets/images/cat-infantil.jpg" alt="Infantil" loading="lazy">
-              </div>
-              <span class="cat-name">Infantil</span>
+          <a href="ofertas.html" class="category-item-card" data-cat="infantil">
+            <div class="cat-img-box">
+              <img src="assets/images/cat-infantil.jpg" alt="Infantil" loading="lazy">
             </div>
+            <span class="cat-title">Infantil</span>
+          </a>
 
-          </div>
-
-          <!-- Carousel Next Button (Desktop) -->
-          <button class="carousel-arrow next" id="catNextBtn" aria-label="Rolar categorias">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <button type="button" class="carousel-arrow-btn" id="catNextBtn" aria-label="Rolar categorias">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
+
         </div>
 
       </div>
     </section>
 
-    <!-- Best Sellers Section ("Mais Vendidos") -->
-    <section class="section bestsellers-section" id="mais-vendidos">
+    <!-- Mais Vendidos Section -->
+    <section class="section-bestsellers" id="mais-vendidos">
       <div class="section-container">
         
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Mais vendidos</h2>
-            <div class="live-bot-status" id="botStatusBadge">
-              <span class="pulse-dot"></span>
-              <span id="botStatusText">Robô Shopee Ativo • Ofertas com até 70% OFF</span>
-            </div>
-          </div>
-          <a href="#mais-vendidos" class="see-all-link" id="seeAllBestSellers">
-            Ver todas <span class="arrow">›</span>
-          </a>
+        <div class="section-header-row">
+          <h2 class="section-title"><span class="section-title-dot"></span>Mais vendidos</h2>
+          <a href="ofertas.html" class="see-all-link">Ver todas <span class="arrow">›</span></a>
         </div>
 
-        <!-- Products Container: Adapts dynamically via CSS -->
-        <!-- On Desktop: 5-column Cards Grid -->
-        <!-- On Mobile: Sleek Vertical List matching the mockup -->
-        <div class="products-grid" id="productsContainer">
+        <div class="bestsellers-grid">
           
-          <!-- Product Card 1 -->
-          <div class="product-item" data-id="1">
-            <div class="rank-badge rank-1">1</div>
-            <div class="prod-thumb">
-              <img src="assets/images/prod-faca.jpg" alt="Faca De Caça Pesca Churrasco Luxo Personalizada" loading="lazy">
+          <!-- Rank Item 1 -->
+          <div class="bestseller-card">
+            <div class="rank-number rank-1">1</div>
+            <div class="bestseller-thumb">
+              <img src="assets/images/prod-fone.jpg" alt="Fone de Ouvido Bluetooth" loading="lazy">
             </div>
-            <div class="prod-details">
-              <h3 class="prod-title">Faca De Caça Pesca Churrasco Luxo Personalizada com seu Nome Gravado</h3>
-              <div class="prod-rating">
+            <div class="bestseller-info">
+              <h3 class="bestseller-title">Fone de Ouvido Bluetooth</h3>
+              <div class="bestseller-rating">
                 <span class="star">★</span>
-                <span class="rate-num">4,9</span>
-                <span class="rate-count">(8,4k)</span>
+                <span class="rate">4,9</span>
+                <span class="count">(12,5k)</span>
               </div>
-              <div class="prod-pricing">
-                <span class="curr-price">R$ 68,90</span>
-                <span class="old-price">R$ 139,90</span>
-                <span class="off-badge">51% OFF</span>
+              <div class="bestseller-pricing">
+                <span class="curr">R$ 89,90</span>
+                <span class="old">R$ 129,90</span>
+                <span class="disc-tag">31% OFF</span>
               </div>
-            </div>
-            <div class="prod-actions">
-              <a href="https://shopee.com.br/Faca-De-Ca%C3%A7a-Pesca-Churrasco-Luxo-Personalizada-com-seu-Nome-Gravado-i.552841607.22993928341?extraParams=%7B%22display_model_id%22%3A209606531649%2C%22model_selection_logic%22%3A3%7D&aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
+              <a href="https://shopee.com.br?aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-shopee btn-card-action">
                 Ver na Shopee
               </a>
-              <div class="mobile-chevron">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
             </div>
           </div>
 
-          <!-- Product Card 2 -->
-          <div class="product-item" data-id="2">
-            <div class="rank-badge rank-2">2</div>
-            <div class="prod-thumb">
-              <img src="assets/images/prod-oculos.jpg" alt="Óculos Sol Esportivo Máscara Ciclismo" loading="lazy">
+          <!-- Rank Item 2 -->
+          <div class="bestseller-card">
+            <div class="rank-number rank-2">2</div>
+            <div class="bestseller-thumb">
+              <img src="assets/images/prod-smartwatch.jpg" alt="Smartwatch D20" loading="lazy">
             </div>
-            <div class="prod-details">
-              <h3 class="prod-title">Óculos Sol Esportivo Máscara Lente Azul Espelhado Ciclismo Bike MTB UV400</h3>
-              <div class="prod-rating">
+            <div class="bestseller-info">
+              <h3 class="bestseller-title">Smartwatch D20</h3>
+              <div class="bestseller-rating">
                 <span class="star">★</span>
-                <span class="rate-num">4,9</span>
-                <span class="rate-count">(12,1k)</span>
+                <span class="rate">4,8</span>
+                <span class="count">(8,2k)</span>
               </div>
-              <div class="prod-pricing">
-                <span class="curr-price">R$ 24,90</span>
-                <span class="old-price">R$ 83,00</span>
-                <span class="off-badge">70% OFF</span>
+              <div class="bestseller-pricing">
+                <span class="curr">R$ 59,90</span>
+                <span class="old">R$ 99,90</span>
+                <span class="disc-tag">40% OFF</span>
               </div>
-            </div>
-            <div class="prod-actions">
-              <a href="https://shopee.com.br/%C3%93culos-Sol-Esportivo-Mascara-Branco-Lente-Azul-Espelhado-Ciclismo-Bike-MTB-UV400-Corrida-Pesca-Masculino-i.1138019028.58262941970?extraParams=%7B%22display_model_id%22%3A209190888517%2C%22model_selection_logic%22%3A3%7D&aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
+              <a href="https://shopee.com.br?aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-shopee btn-card-action">
                 Ver na Shopee
               </a>
-              <div class="mobile-chevron">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
             </div>
           </div>
 
-          <!-- Product Card 3 -->
-          <div class="product-item" data-id="3">
-            <div class="rank-badge rank-3">3</div>
-            <div class="prod-thumb">
-              <img src="assets/images/prod-pulseira.jpg" alt="Pulseira Oceano Silicone Apple Watch" loading="lazy">
+          <!-- Rank Item 3 -->
+          <div class="bestseller-card">
+            <div class="rank-number rank-3">3</div>
+            <div class="bestseller-thumb">
+              <img src="assets/images/prod-fita-led.jpg" alt="Fita LED RGB 5M" loading="lazy">
             </div>
-            <div class="prod-details">
-              <h3 class="prod-title">Pulseira Oceano Silicone Para Apple Watch e Iwo 38mm até 49mm Ultra</h3>
-              <div class="prod-rating">
+            <div class="bestseller-info">
+              <h3 class="bestseller-title">Fita LED RGB 5M</h3>
+              <div class="bestseller-rating">
                 <span class="star">★</span>
-                <span class="rate-num">4,8</span>
-                <span class="rate-count">(19,8k)</span>
+                <span class="rate">4,7</span>
+                <span class="count">(6,1k)</span>
               </div>
-              <div class="prod-pricing">
-                <span class="curr-price">R$ 14,90</span>
-                <span class="old-price">R$ 49,90</span>
-                <span class="off-badge">70% OFF</span>
+              <div class="bestseller-pricing">
+                <span class="curr">R$ 29,90</span>
+                <span class="old">R$ 49,90</span>
+                <span class="disc-tag">40% OFF</span>
               </div>
-            </div>
-            <div class="prod-actions">
-              <a href="https://shopee.com.br/Pulseira-Oceano-Silicone-Para-Apple-Watch-e-Iwo-38mm-40mm-41mm-42mm-44mm-45mm-49mm-Ultra-serie-8-i.1242297287.22693870278?extraParams=%7B%22display_model_id%22%3A159783299485%2C%22model_selection_logic%22%3A3%7D&aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
+              <a href="https://shopee.com.br?aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-shopee btn-card-action">
                 Ver na Shopee
               </a>
-              <div class="mobile-chevron">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
             </div>
           </div>
 
-          <!-- Product Card 4 -->
-          <div class="product-item" data-id="4">
-            <div class="rank-badge rank-default">4</div>
-            <div class="prod-thumb">
+          <!-- Rank Item 4 -->
+          <div class="bestseller-card">
+            <div class="rank-number rank-default">4</div>
+            <div class="bestseller-thumb">
               <img src="assets/images/prod-carregador.jpg" alt="Carregador Portátil 10000mAh" loading="lazy">
             </div>
-            <div class="prod-details">
-              <h3 class="prod-title">Carregador Portátil 10000mAh</h3>
-              <div class="prod-rating">
+            <div class="bestseller-info">
+              <h3 class="bestseller-title">Carregador Portátil 10000mAh</h3>
+              <div class="bestseller-rating">
                 <span class="star">★</span>
-                <span class="rate-num">4,8</span>
-                <span class="rate-count">(9,8k)</span>
+                <span class="rate">4,8</span>
+                <span class="count">(9,8k)</span>
               </div>
-              <div class="prod-pricing">
-                <span class="curr-price">R$ 49,90</span>
-                <span class="old-price">R$ 79,90</span>
-                <span class="off-badge">37% OFF</span>
+              <div class="bestseller-pricing">
+                <span class="curr">R$ 49,90</span>
+                <span class="old">R$ 79,90</span>
+                <span class="disc-tag">37% OFF</span>
               </div>
-            </div>
-            <div class="prod-actions">
-              <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
+              <a href="https://shopee.com.br?aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-shopee btn-card-action">
                 Ver na Shopee
               </a>
-              <div class="mobile-chevron">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
             </div>
           </div>
 
-          <!-- Product Card 5 -->
-          <div class="product-item" data-id="5">
-            <div class="rank-badge rank-default">5</div>
-            <div class="prod-thumb">
+          <!-- Rank Item 5 -->
+          <div class="bestseller-card">
+            <div class="rank-number rank-default">5</div>
+            <div class="bestseller-thumb">
               <img src="assets/images/prod-airfryer.jpg" alt="Fritadeira Air Fryer 4L" loading="lazy">
             </div>
-            <div class="prod-details">
-              <h3 class="prod-title">Fritadeira Air Fryer 4L</h3>
-              <div class="prod-rating">
+            <div class="bestseller-info">
+              <h3 class="bestseller-title">Fritadeira Air Fryer 4L</h3>
+              <div class="bestseller-rating">
                 <span class="star">★</span>
-                <span class="rate-num">4,9</span>
-                <span class="rate-count">(15,2k)</span>
+                <span class="rate">4,9</span>
+                <span class="count">(15,2k)</span>
               </div>
-              <div class="prod-pricing">
-                <span class="curr-price">R$ 259,90</span>
-                <span class="old-price">R$ 399,90</span>
-                <span class="off-badge">35% OFF</span>
+              <div class="bestseller-pricing">
+                <span class="curr">R$ 259,90</span>
+                <span class="old">R$ 399,90</span>
+                <span class="disc-tag">35% OFF</span>
               </div>
-            </div>
-            <div class="prod-actions">
-              <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
+              <a href="https://shopee.com.br?aff_id=1836460594" target="_blank" rel="noopener noreferrer" class="btn btn-shopee btn-card-action">
                 Ver na Shopee
               </a>
-              <div class="mobile-chevron">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
             </div>
           </div>
 
@@ -527,277 +462,158 @@
     </section>
 
     <!-- Coupons Banner Section -->
-    <section class="section coupons-section" id="cupons">
+    <section class="section-coupons" id="cupons">
       <div class="section-container">
-        
-        <div class="coupons-card">
-          <div class="coupon-left">
-            <div class="coupon-badge-icon">
-              <span>%</span>
-            </div>
-            <div class="coupon-info">
-              <h3 class="coupon-title">Cupons exclusivos para você!</h3>
-              <p class="coupon-desc">Aproveite os melhores cupons da Shopee disponíveis hoje.</p>
+        <div class="coupon-banner-card">
+          <div class="coupon-banner-left">
+            <div class="coupon-badge-icon">%</div>
+            <div class="coupon-banner-text">
+              <h3>Cupons exclusivos para você!</h3>
+              <p>Aproveite os melhores cupons da Shopee disponíveis hoje.</p>
             </div>
           </div>
-          <div class="coupon-right">
-            <button class="btn btn-coupon" id="viewCouponsBtn">
-              <span>Ver cupons</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="coupon-banner-right">
+            <button class="btn btn-outline-coupon" id="viewCouponsBtn">
+              Ver cupons
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
               </svg>
             </button>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Newsletter / Leads Bar Section -->
-    <section class="section newsletter-section" id="contato">
+    <!-- Newsletter Section -->
+    <section class="section-newsletter" id="contato">
       <div class="section-container">
-        
         <div class="newsletter-card">
           <div class="newsletter-left">
             <div class="mail-icon-box">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </div>
-            <div class="newsletter-text">
-              <h3 class="news-title">Receba ofertas exclusivas!</h3>
-              <p class="news-subtitle">Cadastre seu e-mail e receba promoções direto no seu e-mail.</p>
+            <div class="newsletter-info">
+              <h3>Receba ofertas exclusivas!</h3>
+              <p>Cadastre seu e-mail e receba promoções direto no seu e-mail.</p>
             </div>
           </div>
-
           <form class="newsletter-form" id="newsletterForm">
             <input type="email" id="emailInput" placeholder="Seu melhor e-mail" required>
-            <button type="submit" class="btn btn-primary btn-newsletter">
-              <span>Cadastrar</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+            <button type="submit" class="btn btn-primary btn-submit">
+              Cadastrar <span class="arrow">→</span>
             </button>
           </form>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo">
-            <div class="logo-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
-              </svg>
-              <span class="logo-badge-s">S</span>
-            </div>
-            <div class="logo-text">
-              <span class="brand-name">Shopee</span>
-              <span class="brand-sub">AFILIADOS</span>
-            </div>
-          </div>
-          <p class="footer-desc">
-            Portal de curadoria de ofertas, descontos e cupons oficiais da Shopee Brasil. Todas as compras são finalizadas com total segurança diretamente no site e aplicativo oficial da Shopee.
-          </p>
-        </div>
-
-        <div class="footer-links-group">
-          <h4>Navegação</h4>
-          <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#ofertas">Ofertas</a></li>
-            <li><a href="#categorias">Categorias</a></li>
-            <li><a href="#mais-vendidos">Mais Vendidos</a></li>
-            <li><a href="#cupons">Cupons</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-group">
-          <h4>Garantias</h4>
-          <ul>
-            <li><a href="#beneficios">Garantia Shopee</a></li>
-            <li><a href="#beneficios">Frete Grátis</a></li>
-            <li><a href="#beneficios">Reembolso Seguro</a></li>
-            <li><a href="#como-funciona" id="footerComoFunciona">Como Funciona o Programa</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 Shopee Afiliados. Todos os direitos reservados. Site participante do Programa de Afiliados Shopee.</p>
-        <p class="disclaimer">As imagens e marcas registradas são de propriedade de seus respectivos donos e da Shopee Brasil.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Mobile Bottom Navigation Bar (Fixed Tab Bar) -->
-  <nav class="mobile-bottom-bar" aria-label="Navegação Inferior Mobile">
-    <a href="#home" class="bottom-tab-item active" data-tab="inicio">
-      <div class="tab-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-        </svg>
-      </div>
-      <span class="tab-label">Início</span>
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-nav-tab active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      <span>Início</span>
     </a>
-
-    <a href="#ofertas" class="bottom-tab-item" data-tab="ofertas">
-      <div class="tab-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-          <line x1="7" y1="7" x2="7.01" y2="7"></line>
-        </svg>
-      </div>
-      <span class="tab-label">Ofertas</span>
+    <a href="ofertas.html" class="mobile-nav-tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13.5 0.67s0.4 1.92-1.5 3.92c-1.6 1.6-1.5 3.3-0.1 4.7 1.8 1.8 4.3 0.2 4.3 0.2s0.8 1.4-0.4 3.1c-1.2 1.7-3.4 2.4-5.3 1.4-2.4-1.2-3.1-3.9-1.9-6.3 1.2-2.4 4.9-7 4.9-7zm-4.7 10.3c0.4 0.6 0.9 1.1 1.5 1.5-1.9 1.5-3.3 3.6-3.8 6-0.6 2.7 0.2 5.5 2 7.5 1.9 2 4.6 3 7.4 2.7 3.3-0.4 6.1-2.6 7.3-5.7 1.2-3.1 0.5-6.6-1.7-9-0.8-0.9-1.8-1.5-2.9-1.9 0.2 0.7 0.2 1.4 0.1 2.1-0.2 1.5-1.1 2.8-2.4 3.5-1.3 0.7-2.9 0.7-4.2 0-1.3-0.7-2.2-1.9-2.4-3.4-0.1-0.7-0.1-1.4 0.1-2.1-0.4-0.4-0.7-0.8-1-1.2z"/>
+      </svg>
+      <span>Ofertas</span>
     </a>
-
-    <a href="#categorias" class="bottom-tab-item" data-tab="categorias">
-      <div class="tab-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7"></rect>
-          <rect x="14" y="3" width="7" height="7"></rect>
-          <rect x="14" y="14" width="7" height="7"></rect>
-          <rect x="3" y="14" width="7" height="7"></rect>
-        </svg>
-      </div>
-      <span class="tab-label">Categorias</span>
+    <a href="#categorias" class="mobile-nav-tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1z"/>
+      </svg>
+      <span>Categorias</span>
     </a>
-
-    <a href="#cupons" class="bottom-tab-item" id="bottomCuponsTab" data-tab="cupons">
-      <div class="tab-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path>
-          <line x1="12" y1="6" x2="12" y2="18" stroke-dasharray="2 2"></line>
-        </svg>
-      </div>
-      <span class="tab-label">Cupons</span>
+    <a href="#cupons" class="mobile-nav-tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M2.5 19h19a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 21.5 5h-19A1.5 1.5 0 0 0 1 6.5v11A1.5 1.5 0 0 0 2.5 19zM9 8h6v2H9V8zm0 4h6v2H9v-2z"/>
+      </svg>
+      <span>Cupons</span>
     </a>
-
-    <a href="#contato" class="bottom-tab-item" data-tab="conta">
-      <div class="tab-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-      </div>
-      <span class="tab-label">Conta</span>
+    <a href="dashboard.html" class="mobile-nav-tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+      <span>Conta</span>
     </a>
   </nav>
 
-  <!-- Modal: Cupons Exclusivos -->
-  <div class="modal-backdrop" id="couponsModal">
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="brand-name">Shopee</span>
+            <span class="brand-sub">AFILIADOS</span>
+          </div>
+        </div>
+        <p class="footer-desc">Os melhores achadinhos e cupons de desconto Shopee reunidos em um só lugar.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="categorias.html">Categorias</a></li>
+            <li><a href="mais-vendidos.html">Mais Vendidos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Divulgação de Afiliado</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Shopee Afiliados. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Coupons Modal -->
+  <div class="modal-overlay" id="couponsModal">
     <div class="modal-card">
       <div class="modal-header">
-        <div class="modal-title-group">
-          <span class="modal-icon-badge">🎟️</span>
-          <h3>Cupons de Desconto Shopee</h3>
-        </div>
+        <h3>🎟️ Cupons Shopee Liberados</h3>
         <button class="modal-close" id="closeCouponsModal">✕</button>
       </div>
       <div class="modal-body">
-        <p class="modal-desc">Copie o código e cole ao finalizar sua compra no app ou site da Shopee para aplicar o desconto:</p>
-        
-        <div class="coupon-item-list">
-          <div class="coupon-deal-card">
-            <div class="coupon-meta">
-              <span class="badge-off">R$ 20 OFF</span>
-              <h4>Primeira Compra Shopee</h4>
-              <p>Válido para compras acima de R$ 50</p>
-            </div>
-            <div class="coupon-code-action">
-              <span class="coupon-code">BEMVINDO20</span>
-              <button class="copy-btn" data-code="BEMVINDO20">Copiar</button>
-            </div>
-          </div>
-
-          <div class="coupon-deal-card">
-            <div class="coupon-meta">
-              <span class="badge-off">FRETE GRÁTIS</span>
-              <h4>Frete Grátis sem mínimo</h4>
-              <p>Válido em lojas com selo Frete Grátis</p>
-            </div>
-            <div class="coupon-code-action">
-              <span class="coupon-code">FRETEZERO</span>
-              <button class="copy-btn" data-code="FRETEZERO">Copiar</button>
-            </div>
-          </div>
-
-          <div class="coupon-deal-card">
-            <div class="coupon-meta">
-              <span class="badge-off">15% OFF</span>
-              <h4>Tecnologia & Eletrônicos</h4>
-              <p>Válido em fones, smartwatches e acessórios</p>
-            </div>
-            <div class="coupon-code-action">
-              <span class="coupon-code">TECH15</span>
-              <button class="copy-btn" data-code="TECH15">Copiar</button>
-            </div>
+        <div class="coupon-item">
+          <div class="coupon-code-box">FRETEGRATIS</div>
+          <div class="coupon-details">
+            <strong>Frete Grátis acima de R$ 19</strong>
+            <span>Válido em compras no app</span>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
-          Ir para a Shopee Resgatar Cupons ➔
-        </a>
+        <div class="coupon-item">
+          <div class="coupon-code-box">SHOPEE10</div>
+          <div class="coupon-details">
+            <strong>10% OFF na Primeira Compra</strong>
+            <span>Válido para novos usuários</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- Modal: Como Funciona -->
-  <div class="modal-backdrop" id="howItWorksModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <span class="modal-icon-badge">💡</span>
-          <h3>Como Funciona o Site?</h3>
-        </div>
-        <button class="modal-close" id="closeHowItWorksModal">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="how-steps">
-          <div class="how-step">
-            <div class="step-num">1</div>
-            <div>
-              <strong>Encontre o melhor preço</strong>
-              <p>Nós monitoramos diariamente os produtos mais bem avaliados e com maiores descontos da Shopee.</p>
-            </div>
-          </div>
-          <div class="how-step">
-            <div class="step-num">2</div>
-            <div>
-              <strong>Clique em "Ver na Shopee"</strong>
-              <p>Você é redirecionado diretamente para a página oficial do produto dentro da Shopee com segurança total.</p>
-            </div>
-          </div>
-          <div class="how-step">
-            <div class="step-num">3</div>
-            <div>
-              <strong>Compre com Garantia Shopee</strong>
-              <p>Seu pagamento e entrega contam com a proteção oficial e o reembolso garantido da Shopee Brasil.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary btn-block" id="closeHowModalBtn">Entendi, vamos às ofertas!</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notification Feedback -->
-  <div class="toast-notification" id="toast">
-    <span class="toast-icon">✅</span>
-    <span class="toast-msg">Código copiado com sucesso!</span>
   </div>
 
   <script src="data/products.js"></script>

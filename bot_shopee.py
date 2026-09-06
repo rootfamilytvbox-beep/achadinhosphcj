@@ -188,6 +188,41 @@ def extrair_dados_shopee(url):
 
     categoria = detectar_categoria(titulo)
 
+    # Imagem padrão/validação de alta qualidade se não capturada
+    if imagem_url and (imagem_url.startswith("http://") or imagem_url.startswith("//")):
+        if imagem_url.startswith("http://"):
+            imagem_url = "https://" + imagem_url[7:]
+        elif imagem_url.startswith("//"):
+            imagem_url = "https:" + imagem_url
+
+    if not imagem_url or not (imagem_url.startswith("http://") or imagem_url.startswith("https://") or imagem_url.startswith("assets/")):
+        t = (titulo or "").lower()
+        if "fone" in t:
+            imagem_url = "assets/images/prod-fone.jpg"
+        elif "smartwatch" in t or "relogio" in t:
+            imagem_url = "assets/images/prod-smartwatch.jpg"
+        elif "fita led" in t or "led" in t:
+            imagem_url = "assets/images/prod-fita-led.jpg"
+        elif "carregador" in t or "power bank" in t:
+            imagem_url = "assets/images/prod-carregador.jpg"
+        elif "air fryer" in t or "fritadeira" in t:
+            imagem_url = "assets/images/prod-airfryer.jpg"
+        elif "mochila" in t:
+            imagem_url = "assets/images/prod-mochila.jpg"
+        elif "teclado" in t:
+            imagem_url = "assets/images/prod-teclado.jpg"
+        else:
+            cat_map = {
+                "eletronicos": "assets/images/cat-eletronicos.jpg",
+                "casa": "assets/images/cat-sofa.jpg",
+                "moda": "assets/images/cat-moda.jpg",
+                "beleza": "assets/images/cat-beleza.jpg",
+                "esportes": "assets/images/cat-esportes.jpg",
+                "automotivo": "assets/images/cat-automotivo.jpg",
+                "infantil": "assets/images/cat-infantil.jpg",
+            }
+            imagem_url = cat_map.get(categoria, "assets/images/prod-fone.jpg")
+
     return {
         "title": titulo,
         "category": categoria,
@@ -203,7 +238,7 @@ def extrair_dados_shopee(url):
 
 def salvar_produto_no_site(novo_produto):
     """
-    Adiciona o novo produto ao arquivo data/products.json do site.
+    Adiciona o novo produto aos arquivos data/products.json e data/products.js do site.
     """
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
 
@@ -230,6 +265,16 @@ def salvar_produto_no_site(novo_produto):
     # Salvar no JSON
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(produtos, f, ensure_ascii=False, indent=2)
+
+    # Salvar também no JS
+    JS_FILE = os.path.join(BASE_DIR, "data", "products.js")
+    agora = datetime.now().strftime("%d/%m/%Y as %H:%M")
+    try:
+        with open(JS_FILE, "w", encoding="utf-8") as f:
+            f.write(f"window.SHOPEE_LAST_UPDATE = '{agora}';\n")
+            f.write("window.SHOPEE_PRODUCTS = " + json.dumps(produtos, ensure_ascii=False, indent=2) + ";\n")
+    except Exception as e:
+        print(f"Aviso ao salvar products.js: {e}")
 
     return len(produtos)
 
